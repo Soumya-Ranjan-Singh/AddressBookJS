@@ -1,37 +1,67 @@
 class AddressBook{
+
+    /**
+     * Parameters
+     */
+    firstName;
+    lastName;
+    address;
+    city;
+    state;
+    zip;
+    phoneNo;
+    email;
+
+    /**
+     * 
+     * @param  {...any} params for parameterized Constructor
+     */
     constructor(...params)
     {
-        this.firstName = params[0];
-        this.lastName = params[1];
-        this.address = params[2];
-        this.city = params[3];
-        this.state = params[4];
-        this.zip = params[5];
-        this.phoneNo = params[6];
-        this.email = params[7];
+        this.setFirstName = params[0];
+        this.setLastName = params[1];
+        this.setAddress = params[2];
+        this.setCity = params[3];
+        this.setState = params[4];
+        this.setZip = params[5];
+        this.setPhoneNo = params[6];
+        this.setEmail = params[7];
     }
 
     /**
-     * @param {RegExp} name
+     * All Getter methods @returns types
      */
-    set setFirstName(name)
+
+    get getFirstName()
+    {
+        return this.firstName;
+    }
+
+
+    /**
+     * All setter methods
+     * @param {RegExp} name
+     * @param {string | ((arg0: any) => void)} firstName
+     */
+    set setFirstName(firstName)
     {
         let nameRegex=RegExp("[A-Z][a-z]{3,}$");
-        if(nameRegex.test(name)){
-            this.firstName = name;
+        if(nameRegex.test(firstName)){
+            this.firstName = firstName;
         }else
-            throw "FirstName "+name+" is invalid";
+            throw "FirstName "+firstName+" is invalid";
     }
     /**
      * @param {RegExp} name
+     * @param {string | ((arg0: any) => void)} lastName
      */
-    set setLastName(name)
+    set setLastName(lastName)
     {
         let nameRegex=RegExp("[A-Z][a-z]{3,}$");
-        if(nameRegex.test(name)){
-            this.lastName = name;
+        if(nameRegex.test(lastName)){
+            this.lastName = lastName;
         }else
-            throw "LastName "+name+" is invalid";
+            throw "LastName "+lastName+" is invalid";
     }
     /**
      * @param {RegExp} address
@@ -67,6 +97,17 @@ class AddressBook{
             throw "state "+state+" is invalid";
     }
     /**
+     * @param {RegExp} zip
+     */
+    set setZip(zip)
+    {
+        let zipRegex=RegExp("^[1-9]{1}[0-9]{2}[\\s]?[0-9]{3}$");
+        if(zipRegex.test(zip)){
+            this.zip=zip;
+        }else
+            throw "Zip "+zip+" is invalid";
+    }
+    /**
      * @param {RegExp} phn
      */
     set setPhoneNo(phn)
@@ -88,27 +129,22 @@ class AddressBook{
         }else
             throw "Email "+email+" is invalid";
     }
+    
     /**
-     * @param {RegExp} zip
+     * 
+     * @returns toString()
      */
-    set setZip(zip)
-    {
-        let zipRegex=RegExp("^[1-9]{4,}$");
-        if(zipRegex.test(zip)){
-            this.zip=zip;
-        }else
-            throw "Zip "+zip+" is invalid";
-    }
-
+    
     toString(){
         return "firstName = "+this.firstName+" , secondName = "+this.lastName+" ,address = "+this.address+" ,city = "+this.city
                     +" , state = "+this.state+" , zip = "+this.zip+" ,phoneNo = "+this.phoneNo+" , email = "+this.email;
     } 
 }
 
-let addressBook1 = new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","8908641811","soumyars675@gmail.com");
+
+let addressBook1 = new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","+91 8908641811","soumyars675@gmail.com");
 console.log(addressBook1.toString());
-let addressBook2 = new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","9937410410","sambitb@gmail.com");
+let addressBook2 = new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","+91 9937410410","sambitb@gmail.com");
 console.log(addressBook2.toString());
 
 try{
@@ -192,7 +228,39 @@ try{
 
 let addressBookArray = new Array();
 
-addressBookArray.push(new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","8908641811","soumyars675@gmail.com"));
-addressBookArray.push(new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","9937410410","sambitb@gmail.com"));
+addressBookArray.push(new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","+91 8908641811","soumyars675@gmail.com"));
+addressBookArray.push(new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","+91 9937410410","sambitb@gmail.com"));
 
+console.log(addressBookArray);
+
+function searchByName(name,data,paramName) {
+    addressBookArray.forEach(element => {
+        if (element.getFirstName == name)
+        {
+            editAddressBook(element,data,paramName);
+        }
+    });
+}
+
+function editAddressBook(addressBook,data,paramName)
+{
+    if (paramName == "firstName")
+        addressBook.setFirstName = data;
+    else if (paramName == "lastName")
+        addressBook.setFirstName = data;
+    else if (paramName == "address")
+        addressBook.setAddress = data;
+    else if (paramName == "city")
+        addressBook.setCity = data;
+    else if (paramName == "state")
+        addressBook.setState = data;
+    else if (paramName == "zip")
+        addressBook.setZip = data;
+    else if (paramName == "phoneNo")
+        addressBook.setPhoneNo = data;
+    else if (paramName == "email")
+        addressBook.setEmail = data;
+}
+
+searchByName("Soumya","+91 8249837408","phoneNo");
 console.log(addressBookArray);

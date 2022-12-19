@@ -106,9 +106,9 @@ class AddressBook{
     } 
 }
 
-let addressBook1 =new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","8908641811","soumyars675@gmail.com");
+let addressBook1 = new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","8908641811","soumyars675@gmail.com");
 console.log(addressBook1.toString());
-let addressBook2 =new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","9937410410","sambitb@gmail.com");
+let addressBook2 = new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","9937410410","sambitb@gmail.com");
 console.log(addressBook2.toString());
 
 try{
@@ -189,3 +189,10 @@ try{
 }catch(e){
     console.error(e);
 }
+
+let addressBookArray = new Array();
+
+addressBookArray.push(new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","8908641811","soumyars675@gmail.com"));
+addressBookArray.push(new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","9937410410","sambitb@gmail.com"));
+
+console.log(addressBookArray);

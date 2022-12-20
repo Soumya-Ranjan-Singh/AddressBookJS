@@ -44,6 +44,10 @@ class AddressBook{
     {
         return this.state;
     }
+    get getZip()
+    {
+        return this.zip;
+    }
 
 
     /**
@@ -408,5 +412,48 @@ function sortContactsByName(){
     console.log(addressBookArray);
  }
 
- sortContactsByName();
+sortContactsByName();
  
+/**
+ * 
+ * @param {*} type :- firstName , city , state or zip
+ */
+function sortContacts(type){
+    switch(type){
+        case "name": addressBookArray.sort((contact1,contact2) => {
+                        if (contact1.getFirstName > contact2.getFirstName) return 1;
+                        else if (contact1.getFirstName < contact2.getFirstName) return -1;
+                        return 0;
+                        }); 
+                        break;
+        case "city": addressBookArray.sort((contact1,contact2) => {
+                        if (contact1.getCity > contact2.getCity) return 1;
+                        else if (contact1.getCity < contact2.getCity) return -1;
+                        return 0;
+                        }); 
+                        break;
+        case "state": addressBookArray.sort((contact1,contact2) => {
+                        if (contact1.getState > contact2.getState) return 1;
+                        else if (contact1.getState < contact2.getState) return -1;
+                        return 0;
+                        }); 
+                        break;
+        case "zip": addressBookArray.sort((contact1,contact2) => {
+                            return contact1.getZip - contact2.getZip;
+                        }); 
+                        break;
+        default: console.log("Invalid type.");
+    }
+}
+
+sortContacts("city");
+console.log("The sorted Address Book on City is: ");
+console.log(addressBookArray);
+
+sortContacts("state");
+console.log("The sorted Address Book on State is: ");
+console.log(addressBookArray);
+
+sortContacts("zip");
+console.log("The sorted Address Book on Zip Code is: ");
+console.log(addressBookArray);

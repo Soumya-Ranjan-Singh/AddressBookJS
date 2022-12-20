@@ -79,7 +79,7 @@ class AddressBook{
      */
     set setCity(city)
     {
-        let cityRegex=RegExp("[A-Z][a-z]{4,}$");
+        let cityRegex=RegExp("^[A-Z][a-z]{4,}$");
         if(cityRegex.test(city)){
             this.city=city;
         }else
@@ -230,6 +230,7 @@ let addressBookArray = new Array();
 
 addressBookArray.push(new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","+91 8908641811","soumyars675@gmail.com"));
 addressBookArray.push(new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","+91 9937410410","sambitb@gmail.com"));
+addressBookArray.push(new AddressBook("Nigam","Jena","Nakhara","Bhubaneswar","Odisha","748007","+91 7008646484","nigamj@gmail.com"));
 
 console.log(addressBookArray);
 
@@ -262,5 +263,19 @@ function editAddressBook(addressBook,data,paramName)
         addressBook.setEmail = data;
 }
 
+function deleteAddressBook(name)
+{
+    addressBookArray.forEach(element => {
+        if (element.getFirstName == name)
+        {
+            index = addressBookArray.indexOf(element);
+            addressBookArray.splice(index);
+        }
+    });
+}
+
 searchByName("Soumya","+91 8249837408","phoneNo");
+console.log(addressBookArray);
+
+deleteAddressBook("Nigam");
 console.log(addressBookArray);

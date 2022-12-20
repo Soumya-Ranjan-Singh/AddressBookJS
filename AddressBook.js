@@ -375,4 +375,13 @@ function searchByState(data){
 }
 
 searchByCity("Cuttack");
-searchByState("Karnataka")
+searchByState("Karnataka");
+
+function getCountByCityState(cityOrState){
+    let count = 0;
+    addressBookArray.filter(element =>element.getCity == cityOrState).forEach(element=>++count);
+    addressBookArray.filter(element =>element.getState == cityOrState).forEach(element=>++count);
+    return count;
+}
+console.log("Count in Cuttack : "+getCountByCityState("Cuttack"));
+console.log("Count in Karnataka : "+getCountByCityState("Karnataka"));

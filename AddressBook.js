@@ -310,3 +310,20 @@ deleteAddressBook("Nigam");
 console.log(addressBookArray);
 
 getCount();
+
+function addContact(firstName,lastName,address,city,state,zip,phoneNo,email){
+    flag = true;
+    addressBookArray.filter(element => {
+        if (element.getFirstName != firstName)
+            flag = false;
+    });
+    if (!flag)
+    {
+        addressBookArray.push(new AddressBook(firstName,lastName,address,city,state,zip,phoneNo,email));
+    }
+    else
+        console.log("Contact is already present")
+}
+
+addContact("Nirmal","Barik","Nayabazar","Cuttack","Odisha","753028","+91 9774845422","nabarik@gmail.com");
+console.log(addressBookArray);

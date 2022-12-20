@@ -226,6 +226,9 @@ try{
     console.error(e);
 }
 
+/**
+ * Adding AddressBook to an Array
+ */
 let addressBookArray = new Array();
 
 addressBookArray.push(new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","+91 8908641811","soumyars675@gmail.com"));
@@ -234,6 +237,12 @@ addressBookArray.push(new AddressBook("Nigam","Jena","Nakhara","Bhubaneswar","Od
 
 console.log(addressBookArray);
 
+/**
+ * 
+ * @param {*} name 
+ * @param {*} data 
+ * @param {*} paramName 
+ */
 function searchByName(name,data,paramName) {
     addressBookArray.forEach(element => {
         if (element.getFirstName == name)
@@ -243,6 +252,12 @@ function searchByName(name,data,paramName) {
     });
 }
 
+/**
+ * 
+ * @param {*} AddressBook 
+ * @param {*} data 
+ * @param {*} paramName 
+ */
 function editAddressBook(addressBook,data,paramName)
 {
     if (paramName == "firstName")
@@ -263,6 +278,10 @@ function editAddressBook(addressBook,data,paramName)
         addressBook.setEmail = data;
 }
 
+/**
+ * 
+ * @param {*} name 
+ */
 function deleteAddressBook(name)
 {
     addressBookArray.forEach(element => {
@@ -274,8 +293,20 @@ function deleteAddressBook(name)
     });
 }
 
+/**
+ * Getting count of array
+ */
+function count(addressCount){
+    return ++addressCount;
+}
+function getCount(){
+    console.log("Contact Count: "+addressBookArray.reduce(count,0)+"\n");
+}
+
 searchByName("Soumya","+91 8249837408","phoneNo");
 console.log(addressBookArray);
 
 deleteAddressBook("Nigam");
 console.log(addressBookArray);
+
+getCount();

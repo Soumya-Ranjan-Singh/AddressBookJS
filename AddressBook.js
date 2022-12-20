@@ -36,6 +36,14 @@ class AddressBook{
     {
         return this.firstName;
     }
+    get getCity()
+    {
+        return this.city;
+    }
+    get getState()
+    {
+        return this.state;
+    }
 
 
     /**
@@ -234,6 +242,7 @@ let addressBookArray = new Array();
 addressBookArray.push(new AddressBook("Soumya","Ranjan","Jobra","Cuttack","Odisha","753007","+91 8908641811","soumyars675@gmail.com"));
 addressBookArray.push(new AddressBook("Sambit","Behera","Chowdwar","Cuttack","Odisha","754205","+91 9937410410","sambitb@gmail.com"));
 addressBookArray.push(new AddressBook("Nigam","Jena","Nakhara","Bhubaneswar","Odisha","748007","+91 7008646484","nigamj@gmail.com"));
+addressBookArray.push(new AddressBook("Chatur","Kanth","Marathalli","Bangalore","Karnataka","560003","+91 8287434374","chaturk@gmail.com"));
 
 console.log(addressBookArray);
 
@@ -288,7 +297,7 @@ function deleteAddressBook(name)
         if (element.getFirstName == name)
         {
             index = addressBookArray.indexOf(element);
-            addressBookArray.splice(index);
+            addressBookArray.splice(index,1);
         }
     });
 }
@@ -311,6 +320,17 @@ console.log(addressBookArray);
 
 getCount();
 
+/**
+ * 
+ * @param {*} firstName 
+ * @param {*} lastName 
+ * @param {*} address 
+ * @param {*} city 
+ * @param {*} state 
+ * @param {*} zip 
+ * @param {*} phoneNo 
+ * @param {*} email 
+ */
 function addContact(firstName,lastName,address,city,state,zip,phoneNo,email){
     flag = true;
     addressBookArray.filter(element => {
@@ -327,3 +347,32 @@ function addContact(firstName,lastName,address,city,state,zip,phoneNo,email){
 
 addContact("Nirmal","Barik","Nayabazar","Cuttack","Odisha","753028","+91 9774845422","nabarik@gmail.com");
 console.log(addressBookArray);
+
+function searchByCity(data){
+    flag = 0;
+    addressBookArray.find(element => {
+        if (element.getCity == data)
+        {
+            console.log(element);
+            flag++;
+        }
+    });
+    if (flag == 0)
+        console.log("No contacts found by this city");
+}
+
+function searchByState(data){
+    flag = 0;
+    addressBookArray.find(element => {
+        if (element.getState == data)
+        {
+            console.log(element);
+            flag++;
+        }
+    });
+    if (flag == 0)
+        console.log("No contacts found by this state");
+}
+
+searchByCity("Cuttack");
+searchByState("Karnataka")

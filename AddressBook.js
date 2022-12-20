@@ -348,6 +348,10 @@ function addContact(firstName,lastName,address,city,state,zip,phoneNo,email){
 addContact("Nirmal","Barik","Nayabazar","Cuttack","Odisha","753028","+91 9774845422","nabarik@gmail.com");
 console.log(addressBookArray);
 
+/**
+ * 
+ * @param {*} data 
+ */
 function searchByCity(data){
     flag = 0;
     addressBookArray.find(element => {
@@ -361,6 +365,10 @@ function searchByCity(data){
         console.log("No contacts found by this city");
 }
 
+/**
+ * 
+ * @param {*} data 
+ */
 function searchByState(data){
     flag = 0;
     addressBookArray.find(element => {
@@ -377,11 +385,28 @@ function searchByState(data){
 searchByCity("Cuttack");
 searchByState("Karnataka");
 
-function getCountByCityState(cityOrState){
+/**
+ * 
+ * @param {*} cityOrState 
+ * @returns 
+ */
+function getCountByCityState(data){
     let count = 0;
-    addressBookArray.filter(element =>element.getCity == cityOrState).forEach(element=>++count);
-    addressBookArray.filter(element =>element.getState == cityOrState).forEach(element=>++count);
+    addressBookArray.filter(element =>element.getCity == data).forEach(element=>++count);
+    addressBookArray.filter(element =>element.getState == data).forEach(element=>++count);
     return count;
 }
 console.log("Count in Cuttack : "+getCountByCityState("Cuttack"));
 console.log("Count in Karnataka : "+getCountByCityState("Karnataka"));
+
+/**
+ * Sorting the array
+ */
+function sortContactsByName(){
+    addressBookArray.sort();
+    console.log("The sorted Address Book Person Name is: ");
+    console.log(addressBookArray);
+ }
+
+ sortContactsByName();
+ 

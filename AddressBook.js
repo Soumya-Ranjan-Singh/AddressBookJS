@@ -172,25 +172,25 @@ try{
     console.error(e);
 }
 try{
-    addressBook1.setAddress="gff" // throws error because address should have min 4 letters & have a capital letter
+    addressBook1.setAddress="pur" // throws error because address should have min 4 letters & have a capital letter
     console.log(addressBook1.toString())
 }catch(e){
     console.error(e);
 }
 try{
-    addressBook1.setCity="aaa" // throws error because city should have min 4 letters & have a capital letter
+    addressBook1.setCity="cut" // throws error because city should have min 4 letters & have a capital letter
     console.log(addressBook1.toString())
 }catch(e){
     console.error(e);
 }
 try{
-    addressBook1.setCity="111" // throws error because city should have string
+    addressBook1.setCity="5446494" // throws error because city should have string
     console.log(addressBook1.toString())
 }catch(e){
     console.error(e);
 }
 try{
-    addressBook1.setState="abc" // throws error because state should have min 4 letters & have a capital letter
+    addressBook1.setState="odi" // throws error because state should have min 4 letters & have a capital letter
     console.log(addressBook1.toString())
 }catch(e){
     console.error(e);
